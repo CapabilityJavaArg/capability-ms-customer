@@ -1,6 +1,6 @@
 package com.accenture.javacapability.backbone.model;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.meanbean.test.BeanTester;
@@ -18,6 +18,6 @@ public class CustomerTest {
 	@Test
 	public void countryTest2() {
 		Customer country = new Customer(1L, "Juan", "Perez", 1L);
-		assertNotNull(country);
+		assertNull(country);
 	}
 }
