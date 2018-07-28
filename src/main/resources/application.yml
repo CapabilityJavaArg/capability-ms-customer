@@ -2,18 +2,4 @@ info:
   name: "@project.artifactId@"
   version: "@project.version@"
   description: "@project.description@"
-  running-profile: "${spring.profiles.active}"  
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URL:http://user:password@localhost:5000}/eureka/
-    register-with-eureka: true
-    fetch-registry: true    
-  instance:
-    instance-id: ${DOMAIN_NAME}
-    hostname:  ${DOMAIN_NAME}
-  password: ${USER_PASSWORD:password}
-security:
-  user:
-    password: ${eureka.password}
+  running-profile: "${spring.profiles.active}"
