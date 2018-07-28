@@ -46,7 +46,7 @@ public class CustomerController {
 		String formatter = String.format(url, msConfig.getLocalization());
 		
 		logger.info(formatter);
-		
+		System.out.println("Main Method "+formatter);
 		String countryName = restTemplate.getForObject(String.format(url, msConfig.getLocalization()), String.class);
 			
 		return new ResponseEntity<>(countryName,HttpStatus.OK);
@@ -57,7 +57,7 @@ public class CustomerController {
 		String url = "http://%s/countryMS/"+id;
 		String formatter = String.format(url, msConfig.getLocalization());
 		logger.info(formatter);
-		
+		System.out.println("BackUp Method "+formatter);
 		return new ResponseEntity<>("Error al comunicarme con el microservicio",HttpStatus.CONFLICT);
 	}
 	
