@@ -13,7 +13,6 @@ eureka:
   instance:
     instance-id: ${DOMAIN_NAME}
     hostname:  ${DOMAIN_NAME}
-    nonSecurePort: 80
   password: ${USER_PASSWORD:password}
 security:
   user:
