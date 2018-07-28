@@ -1,5 +1,6 @@
 package com.accenture.javacapability.backbone.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -34,11 +35,18 @@ public class CustomerController {
 	@Autowired
 	RestTemplate restTemplate;
 	
+	static final Logger logger = Logger.getLogger(CustomerController.class);
+	
+	
 	@HystrixCommand(fallbackMethod="getCountryFromMsLocalizationBackUp")
 	@GetMapping("country/{id}")
 	public ResponseEntity<?> getCountryFromMsLocalization(@PathVariable("id")Long id){
 		
 		String url = "http://%s/countryMS/"+id;
+		String formatter = String.format(url, msConfig.getLocalization());
+		
+		logger.info(formatter);
+		
 		String countryName = restTemplate.getForObject(String.format(url, msConfig.getLocalization()), String.class);
 			
 		return new ResponseEntity<>(countryName,HttpStatus.OK);
@@ -46,6 +54,10 @@ public class CustomerController {
 	}
 	
 	public ResponseEntity<?> getCountryFromMsLocalizationBackUp(@PathVariable("id")Long id){
+		String url = "http://%s/countryMS/"+id;
+		String formatter = String.format(url, msConfig.getLocalization());
+		logger.info(formatter);
+		
 		return new ResponseEntity<>("Error al comunicarme con el microservicio",HttpStatus.CONFLICT);
 	}
 	
