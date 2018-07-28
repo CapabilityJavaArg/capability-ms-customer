@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: capability-ms-customer
+  profiles:
+    active:
+    - master
+  cloud:
+    config:
+      uri:
+      - ${CONFIG_SERVER_URL}
