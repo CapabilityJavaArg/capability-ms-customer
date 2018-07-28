@@ -8,6 +8,8 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URL:http://user:password@localhost:5000}/eureka/
+    register-with-eureka: true
+    fetch-registry: true    
   instance:
     instance-id: ${DOMAIN_NAME}
     hostname:  ${DOMAIN_NAME}
