@@ -42,11 +42,12 @@ public class CustomerController {
 	@GetMapping("country/{id}")
 	public ResponseEntity<?> getCountryFromMsLocalization(@PathVariable("id")Long id){
 		
-		String url = "https://%s/countryMS/"+id;
+		String url = "%s/countryMS/"+id;
 		String formatter = String.format(url, msConfig.getLocalization());
 		
 		logger.info(formatter);
 		System.out.println("Main Method "+formatter);
+		
 		String countryName = restTemplate.getForObject(String.format(url, msConfig.getLocalization()), String.class);
 			
 		return new ResponseEntity<>(countryName,HttpStatus.OK);
@@ -54,8 +55,9 @@ public class CustomerController {
 	}
 	
 	public ResponseEntity<?> getCountryFromMsLocalizationBackUp(@PathVariable("id")Long id){
-		String url = "https://%s/countryMS/"+id;
+		String url = "%s/countryMS/"+id;
 		String formatter = String.format(url, msConfig.getLocalization());
+		
 		logger.info(formatter);
 		System.out.println("BackUp Method "+formatter);
 		return new ResponseEntity<>("Error al comunicarme con el microservicio",HttpStatus.CONFLICT);

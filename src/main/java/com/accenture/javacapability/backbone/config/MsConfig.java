@@ -9,8 +9,11 @@ public class MsConfig {
 	@Value("${capability.microservice.localization}")
 	private String localization;
 
+	@Value("${capability.microservice.secure}")
+	private boolean secure;
+	
 	public String getLocalization() {
-		return localization;
+		return (secure)?localization:"http://"+localization;
 	}
 
 	
