@@ -3,8 +3,8 @@ spring:
     name: capability-ms-customer
   profiles:
     active:
-    - master
+    - local
   cloud:
     config:
       uri:
-      - ${CONFIG_SERVER_URL}
+      - http://localhost:8888
